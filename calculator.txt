@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scientific Calculator</title>
+  <style>
+    body {
+      background: #f2f2f2;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    
+    #calculator {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .row::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    .button {
+      width: 50px;
+      height: 50px;
+      float: left;
+      margin: 5px;
+      background: #4CAF50;
+      color: #fff;
+      border-radius: 5px;
+      line-height: 50px;
+      cursor: pointer;
+    }
+    
+    .button:hover {
+      background: #45a049;
+    }
+    
+    .input-field {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .result {
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <input class="input-field" type="text" id="result" disabled>
+    <div class="row">
+      <div class="button" onclick="appendToResult(7)">7</div>
+      <div class="button" onclick="appendToResult(8)">8</div>
+      <div class="button" onclick="appendToResult(9)">9</div>
+      <div class="button" onclick="appendToResult('/')">/</div>
+    </div>
+    <div class="row">
+      <div class="button" onclick="appendToResult(4)">4</div>
+      <div class="button" onclick="appendToResult(5)">5</div>
+      <div class="button" onclick="appendToResult(6)">6</div>
+      <div class="button" onclick="appendToResult('*')">x</div>
+    </div>
+    <div class="row">
+      <div class="button" onclick="appendToResult(1)">1</div>
+      <div class="button" onclick="appendToResult(2)">2</div>
+      <div class="button" onclick="appendToResult(3)">3</div>
+      <div class="button" onclick="appendToResult('-')">-</div>
+    </div>
+    <div class="row">
+      <div class="button" onclick="appendToResult(0)">0</div>
+      <div class="button" onclick="appendToResult('.')">.</div>
+      <div class="button" onclick="calculateResult()">=</div>
+      <div class="button" onclick="appendToResult('+')">+</div>
+    </div>
+    <div class="row">
+      <div class="button" onclick="clearResult()">C</div>
+      <div class="button" onclick="calculateSin()">sin</div>
+      <div class="button" onclick="calculateCos()">cos</div>
+      <div class="button" onclick="calculateTan()">tan</div>
+    </div>
+  </div>
+  
+  <script>
+    function appendToResult(value) {
+      document.getElementById('result').value += value;
+    }
+    
+    function calculateResult() {
+      try {
+        let result = eval(document.getElementById('result').value);
+        document.getElementById('result').value = result;
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+    
+    function calculateSin() {
+      try {
+        let result = Math.sin(eval(document.getElementById('result').value));
+        document.getElementById('result').value = result;
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+    
+    function calculateCos() {
+      try {
+        let result = Math.cos(eval(document.getElementById('result').value));
+        document.getElementById('result').value = result;
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+    
+    function calculateTan() {
+      try {
+        let result = Math.tan(eval(document.getElementById('result').value));
+        document.getElementById('result').value = result;
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+    
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+  </script>
+</body>
+</html>
